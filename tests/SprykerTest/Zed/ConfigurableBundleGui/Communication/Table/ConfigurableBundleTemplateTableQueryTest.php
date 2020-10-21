@@ -8,7 +8,6 @@
 namespace SprykerTest\Zed\ConfigurableBundleGui\Communication\Table;
 
 use Codeception\Test\Unit;
-use Generated\Shared\Transfer\LocaleTransfer;
 use Orm\Zed\ConfigurableBundle\Persistence\Map\SpyConfigurableBundleTemplateTableMap;
 use Orm\Zed\ConfigurableBundle\Persistence\SpyConfigurableBundleTemplateQuery;
 use Spryker\Zed\ConfigurableBundleGui\Dependency\Facade\ConfigurableBundleGuiToLocaleFacadeBridge;
@@ -36,8 +35,6 @@ class ConfigurableBundleTemplateTableQueryTest extends Unit
     protected const CONFIGURABLE_BUNDLE_TEMPLATE_1 = 'BUNDLE-1';
 
     protected const CONFIGURABLE_BUNDLE_TEMPLATE_2 = 'BUNDLE-2';
-
-    protected const TESTING_ID_LOCALE = 66;
 
     /**
      * @uses \Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin::SERVICE_TWIG
@@ -68,18 +65,19 @@ class ConfigurableBundleTemplateTableQueryTest extends Unit
     /**
      * @return void
      */
-    public function testOrderContentItemsBySelectedItem(): void
+    public function testFetchDataShouldReturnConfigurableBundlesTemplates(): void
     {
         // Arrange
         $configurableBundleTemplate1 = $this->tester->createConfigurableBundleTemplate(static::CONFIGURABLE_BUNDLE_TEMPLATE_1);
         $configurableBundleTemplate2 = $this->tester->createConfigurableBundleTemplate(static::CONFIGURABLE_BUNDLE_TEMPLATE_2);
 
-        // Act
-        $contentQuery = SpyConfigurableBundleTemplateQuery::create();
+        $configurableBundleQuery = SpyConfigurableBundleTemplateQuery::create();
         $tableMock = new ConfigurableBundleTemplateTableMock(
-            $contentQuery,
+            $configurableBundleQuery,
             $this->getConfigurableBundleGuiToLocaleFacadeMock()
         );
+
+        // Act
         $result = $tableMock->fetchData();
 
         // Assert
@@ -106,7 +104,7 @@ class ConfigurableBundleTemplateTableQueryTest extends Unit
 
         $configurableBundleGuiToLocaleFacadeMock->expects($this->once())
             ->method('getCurrentLocale')
-            ->willReturn((new LocaleTransfer())->setIdLocale(static::TESTING_ID_LOCALE));
+            ->willReturn($this->tester->getCurrentLocale());
 
         return $configurableBundleGuiToLocaleFacadeMock;
     }
