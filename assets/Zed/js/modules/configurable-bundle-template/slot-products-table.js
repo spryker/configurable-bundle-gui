@@ -42,7 +42,12 @@ function addSlotTableDrawHandler() {
         }
 
         $.each($rows, function (index, row) {
-            if ($slotTable.row(row).data()[config.slotTableColumnsMapping.idSlot] === selectedIdSlot) {
+            const rowData = $slotTable.row(row).data();
+            if (!rowData) {
+                return;
+            }
+
+            if (rowData[config.slotTableColumnsMapping.idSlot] === selectedIdSlot) {
                 markSelectedRow($(row));
             }
         });
@@ -96,6 +101,10 @@ function performInitialDraw($slotTable, $rows) {
 
 function updateSlotProductsTable(row, $slotTable) {
     var rowData = $slotTable.row(row).data();
+    if (!rowData) {
+        return;
+    }
+
     var idSlot = rowData[config.slotTableColumnsMapping.idSlot];
 
     if (idSlot === selectedIdSlot) {
