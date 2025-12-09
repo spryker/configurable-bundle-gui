@@ -311,6 +311,6 @@ class ConfigurableBundleTemplateTable extends AbstractTable
             return $this->generateLabel(static::STATUS_INACTIVE, 'label-danger');
         }
 
-        return $this->generateLabel(static::STATUS_ACTIVE, 'label-info');
+        return $this->generateLabel(static::STATUS_ACTIVE, 'label-success');
     }
 }
