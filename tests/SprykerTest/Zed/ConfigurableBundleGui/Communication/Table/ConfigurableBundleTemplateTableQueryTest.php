@@ -61,9 +61,6 @@ class ConfigurableBundleTemplateTableQueryTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -72,9 +69,6 @@ class ConfigurableBundleTemplateTableQueryTest extends Unit
         $this->registerFormFactoryServiceMock();
     }
 
-    /**
-     * @return void
-     */
     public function testFetchDataShouldReturnConfigurableBundlesTemplates(): void
     {
         // Arrange
@@ -119,18 +113,12 @@ class ConfigurableBundleTemplateTableQueryTest extends Unit
         return $configurableBundleGuiToLocaleFacadeMock;
     }
 
-    /**
-     * @return void
-     */
     protected function registerTwigServiceMock(): void
     {
         $this->tester->getContainer()
             ->set(static::SERVICE_TWIG, $this->getTwigMock());
     }
 
-    /**
-     * @return void
-     */
     protected function registerFormFactoryServiceMock(): void
     {
         $this->tester->getContainer()
@@ -155,9 +143,6 @@ class ConfigurableBundleTemplateTableQueryTest extends Unit
         return $twigMock;
     }
 
-    /**
-     * @return \Twig\Loader\LoaderInterface
-     */
     protected function getChainLoader(): LoaderInterface
     {
         return new ChainLoader();

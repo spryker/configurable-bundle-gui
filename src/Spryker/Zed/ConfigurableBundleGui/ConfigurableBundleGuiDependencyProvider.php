@@ -81,11 +81,6 @@ class ConfigurableBundleGuiDependencyProvider extends AbstractBundleDependencyPr
      */
     public const PLUGINS_CONFIGURABLE_BUNDLE_TEMPLATE_SLOT_EDIT_TABLES_PROVIDER = 'PLUGINS_CONFIGURABLE_BUNDLE_TEMPLATE_SLOT_EDIT_TABLES_PROVIDER';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container = parent::provideCommunicationLayerDependencies($container);
@@ -105,11 +100,6 @@ class ConfigurableBundleGuiDependencyProvider extends AbstractBundleDependencyPr
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addConfigurableBundleFacade(Container $container): Container
     {
         $container->set(static::FACADE_CONFIGURABLE_BUNDLE, function (Container $container) {
@@ -121,11 +111,6 @@ class ConfigurableBundleGuiDependencyProvider extends AbstractBundleDependencyPr
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addLocaleFacade(Container $container): Container
     {
         $container->set(static::FACADE_LOCALE, function (Container $container) {
@@ -137,11 +122,6 @@ class ConfigurableBundleGuiDependencyProvider extends AbstractBundleDependencyPr
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductListFacade(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT_LIST, function (Container $container) {
@@ -153,11 +133,6 @@ class ConfigurableBundleGuiDependencyProvider extends AbstractBundleDependencyPr
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addConfigurableBundleTemplatePropelQuery(Container $container): Container
     {
         $container->set(static::PROPEL_QUERY_CONFIGURABLE_BUNDLE_TEMPLATE, $container->factory(function () {
@@ -167,11 +142,6 @@ class ConfigurableBundleGuiDependencyProvider extends AbstractBundleDependencyPr
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addConfigurableBundleTemplateSlotPropelQuery(Container $container): Container
     {
         $container->set(static::PROPEL_QUERY_CONFIGURABLE_BUNDLE_TEMPLATE_SLOT, $container->factory(function () {
@@ -181,11 +151,6 @@ class ConfigurableBundleGuiDependencyProvider extends AbstractBundleDependencyPr
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductPropelQuery(Container $container): Container
     {
         $container->set(static::PROPEL_QUERY_PRODUCT, $container->factory(function () {
@@ -195,11 +160,6 @@ class ConfigurableBundleGuiDependencyProvider extends AbstractBundleDependencyPr
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addConfigurableBundleTemplateSlotEditTabsExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_CONFIGURABLE_BUNDLE_TEMPLATE_SLOT_EDIT_TABS_EXPANDER, function () {
@@ -209,11 +169,6 @@ class ConfigurableBundleGuiDependencyProvider extends AbstractBundleDependencyPr
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addConfigurableBundleTemplateSlotEditFormExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_CONFIGURABLE_BUNDLE_TEMPLATE_SLOT_EDIT_FORM_EXPANDER, function () {
@@ -223,11 +178,6 @@ class ConfigurableBundleGuiDependencyProvider extends AbstractBundleDependencyPr
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addConfigurableBundleTemplateSlotEditFormDataProviderExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_CONFIGURABLE_BUNDLE_TEMPLATE_SLOT_EDIT_FORM_DATA_PROVIDER_EXPANDER, function () {
@@ -237,11 +187,6 @@ class ConfigurableBundleGuiDependencyProvider extends AbstractBundleDependencyPr
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addConfigurableBundleTemplateSlotEditFormFileUploadHandlerPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_CONFIGURABLE_BUNDLE_TEMPLATE_SLOT_EDIT_FORM_FILE_UPLOAD_HANDLER, function () {
@@ -251,11 +196,6 @@ class ConfigurableBundleGuiDependencyProvider extends AbstractBundleDependencyPr
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addConfigurableBundleTemplateSlotEditSubTabsProviderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_CONFIGURABLE_BUNDLE_TEMPLATE_SLOT_EDIT_SUB_TABS_PROVIDER, function () {
@@ -265,11 +205,6 @@ class ConfigurableBundleGuiDependencyProvider extends AbstractBundleDependencyPr
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addConfigurableBundleTemplateSlotEditTablesProviderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_CONFIGURABLE_BUNDLE_TEMPLATE_SLOT_EDIT_TABLES_PROVIDER, function () {

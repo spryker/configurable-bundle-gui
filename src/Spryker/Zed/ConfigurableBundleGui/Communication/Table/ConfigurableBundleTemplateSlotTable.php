@@ -106,11 +106,6 @@ class ConfigurableBundleTemplateSlotTable extends AbstractTable
         $this->productListFacade = $productListFacade;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $config->setHeader([
@@ -145,11 +140,6 @@ class ConfigurableBundleTemplateSlotTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return array
-     */
     protected function prepareData(TableConfiguration $config): array
     {
         /** @var \Propel\Runtime\Collection\ArrayCollection $configurableBundleTemplateSlotCollection */
@@ -199,11 +189,6 @@ class ConfigurableBundleTemplateSlotTable extends AbstractTable
         return $configurableBundleTemplateSlotPropelQuery;
     }
 
-    /**
-     * @param \Propel\Runtime\Collection\ArrayCollection $configurableBundleTemplateSlotCollection
-     *
-     * @return \Propel\Runtime\Collection\ArrayCollection
-     */
     protected function expandConfigurableBundleTemplateSlotCollectionWithNumberOfItemsAndActions(
         ArrayCollection $configurableBundleTemplateSlotCollection
     ): ArrayCollection {
@@ -225,11 +210,6 @@ class ConfigurableBundleTemplateSlotTable extends AbstractTable
         return $configurableBundleTemplateSlotCollection;
     }
 
-    /**
-     * @param array $configurableBundleTemplateSlotData
-     *
-     * @return string
-     */
     protected function buildLinks(array $configurableBundleTemplateSlotData): string
     {
         $buttons = [];

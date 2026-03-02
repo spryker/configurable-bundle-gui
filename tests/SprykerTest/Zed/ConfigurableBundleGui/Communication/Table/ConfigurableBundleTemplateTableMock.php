@@ -12,9 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ConfigurableBundleTemplateTableMock extends ConfigurableBundleTemplateTable
 {
-    /**
-     * @return array
-     */
     public function fetchData(): array
     {
         return $this->init()->prepareData($this->config);

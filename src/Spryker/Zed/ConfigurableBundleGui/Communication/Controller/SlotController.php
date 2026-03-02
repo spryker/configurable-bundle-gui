@@ -167,11 +167,6 @@ class SlotController extends AbstractController
         return $this->viewResponse($response);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function deleteAction(Request $request): RedirectResponse
     {
         $response = $this->executeDeleteAction($request);
@@ -179,9 +174,6 @@ class SlotController extends AbstractController
         return $response;
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function availableProductConcreteTableAction(): JsonResponse
     {
         $availableProductConcreteTable = $productConcreteRelationTables = $this->getFactory()
@@ -193,9 +185,6 @@ class SlotController extends AbstractController
         );
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function assignedProductConcreteTableAction(): JsonResponse
     {
         $assignedProductConcreteTable = $productConcreteRelationTables = $this->getFactory()
@@ -329,11 +318,6 @@ class SlotController extends AbstractController
         return $viewData;
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     protected function executeDeleteAction(Request $request): RedirectResponse
     {
         $idConfigurableBundleTemplateSlot = $this->castId(
@@ -382,9 +366,6 @@ class SlotController extends AbstractController
         return $this->redirectResponse($redirectUrl);
     }
 
-    /**
-     * @return array
-     */
     protected function getProductListManagementTabsAndTables(): array
     {
         $productConcreteRelationSubTabs = $this->getFactory()->createProductConcreteRelationSubTabsProvider()->getSubTabs();
@@ -404,11 +385,6 @@ class SlotController extends AbstractController
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotEditFormTransfer $configurableBundleTemplateSlotEditFormTransfer
-     *
-     * @return \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotTransfer
-     */
     protected function mapFormTransferToRegularTransfer(
         ConfigurableBundleTemplateSlotEditFormTransfer $configurableBundleTemplateSlotEditFormTransfer
     ): ConfigurableBundleTemplateSlotTransfer {
@@ -426,11 +402,6 @@ class SlotController extends AbstractController
         return $configurableBundleTemplateSlotTransfer;
     }
 
-    /**
-     * @param int $idConfigurableBundleTemplate
-     *
-     * @return \Generated\Shared\Transfer\ConfigurableBundleTemplateTransfer|null
-     */
     protected function findConfigurableBundleTemplateById(int $idConfigurableBundleTemplate): ?ConfigurableBundleTemplateTransfer
     {
         $configurableBundleTemplateFilterTransfer = (new ConfigurableBundleTemplateFilterTransfer())
@@ -443,11 +414,6 @@ class SlotController extends AbstractController
             ->getConfigurableBundleTemplate();
     }
 
-    /**
-     * @param int $idConfigurableBundleTemplateSlot
-     *
-     * @return \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotFilterTransfer
-     */
     protected function createConfigurableBundleTemplateSlotFilter(int $idConfigurableBundleTemplateSlot): ConfigurableBundleTemplateSlotFilterTransfer
     {
         return (new ConfigurableBundleTemplateSlotFilterTransfer())

@@ -28,11 +28,6 @@ class AbstractConfigurableBundleTabs extends AbstractTabs
      */
     protected const FOOTER_TEMPLATE = '@ConfigurableBundleGui/Template/_partials/submit-button.twig';
 
-    /**
-     * @param \Generated\Shared\Transfer\TabsViewTransfer $tabsViewTransfer
-     *
-     * @return \Generated\Shared\Transfer\TabsViewTransfer
-     */
     protected function build(TabsViewTransfer $tabsViewTransfer): TabsViewTransfer
     {
         $this->addGeneralTab($tabsViewTransfer)

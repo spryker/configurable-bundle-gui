@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\ButtonCollectionTransfer;
 
 interface ProductListButtonsExpanderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ButtonCollectionTransfer $buttonCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ButtonCollectionTransfer
-     */
     public function expandButtonCollection(ButtonCollectionTransfer $buttonCollectionTransfer): ButtonCollectionTransfer;
 }

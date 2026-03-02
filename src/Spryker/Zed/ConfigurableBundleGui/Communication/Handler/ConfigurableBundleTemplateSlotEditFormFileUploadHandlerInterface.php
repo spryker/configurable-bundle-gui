@@ -12,12 +12,6 @@ use Symfony\Component\Form\FormInterface;
 
 interface ConfigurableBundleTemplateSlotEditFormFileUploadHandlerInterface
 {
-    /**
-     * @param \Symfony\Component\Form\FormInterface $configurableBundleTemplateSlotEditForm
-     * @param \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotEditFormTransfer $configurableBundleTemplateSlotEditFormTransfer
-     *
-     * @return \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotEditFormTransfer
-     */
     public function handleFileUploads(
         FormInterface $configurableBundleTemplateSlotEditForm,
         ConfigurableBundleTemplateSlotEditFormTransfer $configurableBundleTemplateSlotEditFormTransfer

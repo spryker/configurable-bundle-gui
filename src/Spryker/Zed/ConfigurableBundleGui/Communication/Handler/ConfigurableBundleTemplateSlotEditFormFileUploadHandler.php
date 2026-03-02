@@ -34,12 +34,6 @@ class ConfigurableBundleTemplateSlotEditFormFileUploadHandler implements Configu
         $this->configurableBundleTemplateSlotEditFormFileUploadHandlerPlugins = $configurableBundleTemplateSlotEditFormFileUploadHandlerPlugins;
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormInterface $configurableBundleTemplateSlotEditForm
-     * @param \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotEditFormTransfer $configurableBundleTemplateSlotEditFormTransfer
-     *
-     * @return \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotEditFormTransfer
-     */
     public function handleFileUploads(
         FormInterface $configurableBundleTemplateSlotEditForm,
         ConfigurableBundleTemplateSlotEditFormTransfer $configurableBundleTemplateSlotEditFormTransfer
@@ -55,13 +49,6 @@ class ConfigurableBundleTemplateSlotEditFormFileUploadHandler implements Configu
         return $configurableBundleTemplateSlotEditFormTransfer;
     }
 
-    /**
-     * @param \Spryker\Zed\ConfigurableBundleGuiExtension\Dependency\Plugin\ConfigurableBundleTemplateSlotEditFormFileUploadHandlerPluginInterface $configurableBundleTemplateSlotEditFormFileUploadHandlerPlugin
-     * @param \Symfony\Component\Form\FormInterface $configurableBundleTemplateSlotEditForm
-     * @param \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotEditFormTransfer $configurableBundleTemplateSlotEditFormTransfer
-     *
-     * @return \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotEditFormTransfer
-     */
     protected function executeConfigurableBundleTemplateSlotEditFormFileUploadHandlerPlugin(
         ConfigurableBundleTemplateSlotEditFormFileUploadHandlerPluginInterface $configurableBundleTemplateSlotEditFormFileUploadHandlerPlugin,
         FormInterface $configurableBundleTemplateSlotEditForm,
@@ -82,12 +69,6 @@ class ConfigurableBundleTemplateSlotEditFormFileUploadHandler implements Configu
         );
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormInterface $form
-     * @param string $fieldPath
-     *
-     * @return \Symfony\Component\Form\FormInterface
-     */
     protected function getFormFieldByPath(FormInterface $form, string $fieldPath): FormInterface
     {
         $formField = clone $form;

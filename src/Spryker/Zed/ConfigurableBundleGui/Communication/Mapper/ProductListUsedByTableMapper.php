@@ -45,12 +45,6 @@ class ProductListUsedByTableMapper implements ProductListUsedByTableMapperInterf
      */
     protected const PARAM_ID_CONFIGURABLE_BUNDLE_TEMPLATE_SLOT = 'id-configurable-bundle-template-slot';
 
-    /**
-     * @param \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotTransfer $configurableBundleTemplateSlotTransfer
-     * @param \Generated\Shared\Transfer\ProductListUsedByTableRowTransfer $productListUsedByTableRowTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListUsedByTableRowTransfer
-     */
     public function mapConfigurableBundleTemplateSlotTransferToProductListUsedByTableRowTransfer(
         ConfigurableBundleTemplateSlotTransfer $configurableBundleTemplateSlotTransfer,
         ProductListUsedByTableRowTransfer $productListUsedByTableRowTransfer
@@ -69,11 +63,6 @@ class ProductListUsedByTableMapper implements ProductListUsedByTableMapperInterf
         return $productListUsedByTableRowTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotTransfer $configurableBundleTemplateSlotTransfer
-     *
-     * @return string
-     */
     protected function createComposedEntityName(ConfigurableBundleTemplateSlotTransfer $configurableBundleTemplateSlotTransfer): string
     {
         $configurableBundleTemplateSlotName = $configurableBundleTemplateSlotTransfer->getTranslations()[0]->getName();
@@ -88,11 +77,6 @@ class ProductListUsedByTableMapper implements ProductListUsedByTableMapperInterf
         );
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotTransfer $configurableBundleTemplateSlotTransfer
-     *
-     * @return \Generated\Shared\Transfer\ButtonCollectionTransfer
-     */
     protected function createActionButtons(ConfigurableBundleTemplateSlotTransfer $configurableBundleTemplateSlotTransfer): ButtonCollectionTransfer
     {
         $buttonCollectionTransfer = new ButtonCollectionTransfer();
@@ -102,12 +86,6 @@ class ProductListUsedByTableMapper implements ProductListUsedByTableMapperInterf
         return $buttonCollectionTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ButtonCollectionTransfer $buttonCollectionTransfer
-     * @param \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotTransfer $configurableBundleTemplateSlotTransfer
-     *
-     * @return \Generated\Shared\Transfer\ButtonCollectionTransfer
-     */
     protected function addEditButton(
         ButtonCollectionTransfer $buttonCollectionTransfer,
         ConfigurableBundleTemplateSlotTransfer $configurableBundleTemplateSlotTransfer

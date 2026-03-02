@@ -109,9 +109,6 @@ class TemplateController extends AbstractController
      */
     protected const ERROR_MESSAGE_PARAM_ID = '%id%';
 
-    /**
-     * @return array
-     */
     public function indexAction(): array
     {
         $table = $this->getFactory()
@@ -154,11 +151,6 @@ class TemplateController extends AbstractController
         return $this->viewResponse($response);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function deleteAction(Request $request): RedirectResponse
     {
         $response = $this->executeDeleteAction($request);
@@ -182,11 +174,6 @@ class TemplateController extends AbstractController
         return $this->viewResponse($response);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function deactivateAction(Request $request): RedirectResponse
     {
         $response = $this->executeDeactivateAction($request);
@@ -194,11 +181,6 @@ class TemplateController extends AbstractController
         return $response;
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function activateAction(Request $request): RedirectResponse
     {
         $response = $this->executeActivateAction($request);
@@ -206,11 +188,6 @@ class TemplateController extends AbstractController
         return $response;
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function slotTableAction(Request $request): JsonResponse
     {
         $idConfigurableBundleTemplate = $this->castId(
@@ -222,11 +199,6 @@ class TemplateController extends AbstractController
         return $this->jsonResponse($table->fetchData());
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function slotProductsTableAction(Request $request): JsonResponse
     {
         $idConfigurableBundleTemplateSlot = $this->castId(
@@ -238,9 +210,6 @@ class TemplateController extends AbstractController
         return $this->jsonResponse($table->fetchData());
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function tableAction(): JsonResponse
     {
         $table = $this->getFactory()
@@ -355,11 +324,6 @@ class TemplateController extends AbstractController
         ];
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     protected function executeDeactivateAction(Request $request): RedirectResponse
     {
         $form = $this->getFactory()->createDeactivateConfigurableBundleTemplateForm()->handleRequest($request);
@@ -412,11 +376,6 @@ class TemplateController extends AbstractController
         return $this->redirectResponse(static::ROUTE_TEMPLATES_LIST);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     protected function executeActivateAction(Request $request): RedirectResponse
     {
         $form = $this->getFactory()->createActivateConfigurableBundleTemplateForm()->handleRequest($request);
@@ -469,11 +428,6 @@ class TemplateController extends AbstractController
         return $this->redirectResponse(static::ROUTE_TEMPLATES_LIST);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     protected function executeDeleteAction(Request $request): RedirectResponse
     {
         $deleteForm = $this->getFactory()->createDeleteConfigurableBundleTemplateForm()->handleRequest($request);
@@ -552,11 +506,6 @@ class TemplateController extends AbstractController
         ];
     }
 
-    /**
-     * @param int $idConfigurableBundleTemplate
-     *
-     * @return \Generated\Shared\Transfer\ConfigurableBundleTemplateFilterTransfer
-     */
     protected function createConfigurableBundleTemplateFilter(int $idConfigurableBundleTemplate): ConfigurableBundleTemplateFilterTransfer
     {
         return (new ConfigurableBundleTemplateFilterTransfer())

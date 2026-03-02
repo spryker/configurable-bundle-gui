@@ -13,9 +13,6 @@ namespace Spryker\Zed\ConfigurableBundleGui\Communication\Form;
  */
 abstract class AbstractConfigurableBundleTemplateSlotForm extends AbstractConfigurableBundleForm
 {
-    /**
-     * @return string
-     */
     protected function getTranslationFormClass(): string
     {
         return ConfigurableBundleTemplateSlotTranslationForm::class;

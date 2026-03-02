@@ -15,9 +15,6 @@ use Generated\Shared\Transfer\ConfigurableBundleTemplateTransfer;
  */
 class ConfigurableBundleTemplateForm extends AbstractConfigurableBundleForm
 {
-    /**
-     * @return array
-     */
     protected function getDefaultOptions(): array
     {
         return [
@@ -25,9 +22,6 @@ class ConfigurableBundleTemplateForm extends AbstractConfigurableBundleForm
         ];
     }
 
-    /**
-     * @return string
-     */
     protected function getTranslationFormClass(): string
     {
         return ConfigurableBundleTemplateTranslationForm::class;

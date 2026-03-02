@@ -15,9 +15,6 @@ use Generated\Shared\Transfer\ConfigurableBundleTemplateSlotTransfer;
  */
 class ConfigurableBundleTemplateSlotCreateForm extends AbstractConfigurableBundleTemplateSlotForm
 {
-    /**
-     * @return array
-     */
     protected function getDefaultOptions(): array
     {
         return [

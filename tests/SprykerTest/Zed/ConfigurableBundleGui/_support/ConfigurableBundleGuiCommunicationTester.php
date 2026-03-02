@@ -35,11 +35,6 @@ class ConfigurableBundleGuiCommunicationTester extends Actor
      */
     protected const TRANSLATION_TRANSFER_NAME = 'test-name';
 
-    /**
-     * @param string $name
-     *
-     * @return \Generated\Shared\Transfer\ConfigurableBundleTemplateTransfer
-     */
     public function createConfigurableBundleTemplate(string $name): ConfigurableBundleTemplateTransfer
     {
         return $this->haveConfigurableBundleTemplate([
@@ -50,9 +45,6 @@ class ConfigurableBundleGuiCommunicationTester extends Actor
         ]);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     public function getCurrentLocale(): LocaleTransfer
     {
         return $this->getLocator()
@@ -61,9 +53,6 @@ class ConfigurableBundleGuiCommunicationTester extends Actor
             ->getCurrentLocale();
     }
 
-    /**
-     * @return array
-     */
     protected function getTemplateTranslations(): array
     {
         $availableLocaleTransfers = $this->getLocator()

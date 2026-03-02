@@ -32,11 +32,6 @@ class ProductListUsedByTableExpander implements ProductListUsedByTableExpanderIn
      */
     protected $productListUsedByTableMapper;
 
-    /**
-     * @param \Spryker\Zed\ConfigurableBundleGui\Dependency\Facade\ConfigurableBundleGuiToConfigurableBundleFacadeInterface $configurableBundleFacade
-     * @param \Spryker\Zed\ConfigurableBundleGui\Dependency\Facade\ConfigurableBundleGuiToLocaleFacadeInterface $localeFacade
-     * @param \Spryker\Zed\ConfigurableBundleGui\Communication\Mapper\ProductListUsedByTableMapperInterface $productListUsedByTableMapper
-     */
     public function __construct(
         ConfigurableBundleGuiToConfigurableBundleFacadeInterface $configurableBundleFacade,
         ConfigurableBundleGuiToLocaleFacadeInterface $localeFacade,
@@ -47,11 +42,6 @@ class ProductListUsedByTableExpander implements ProductListUsedByTableExpanderIn
         $this->localeFacade = $localeFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductListUsedByTableTransfer $productListUsedByTableTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListUsedByTableTransfer
-     */
     public function expandTableData(ProductListUsedByTableTransfer $productListUsedByTableTransfer): ProductListUsedByTableTransfer
     {
         $productListUsedByTableTransfer

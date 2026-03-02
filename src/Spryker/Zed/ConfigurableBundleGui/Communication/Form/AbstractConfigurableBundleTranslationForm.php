@@ -41,16 +41,8 @@ abstract class AbstractConfigurableBundleTranslationForm extends AbstractType
      */
     protected const OPTION_DATA_CLASS = 'data_class';
 
-    /**
-     * @return array
-     */
     abstract protected function getDefaultOptions(): array;
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setRequired(AbstractConfigurableBundleForm::OPTION_AVAILABLE_LOCALES);

@@ -19,19 +19,11 @@ class ConfigurableBundleTemplateSlotCreateFormDataProvider
      */
     protected $localeFacade;
 
-    /**
-     * @param \Spryker\Zed\ConfigurableBundleGui\Dependency\Facade\ConfigurableBundleGuiToLocaleFacadeInterface $localeFacade
-     */
     public function __construct(ConfigurableBundleGuiToLocaleFacadeInterface $localeFacade)
     {
         $this->localeFacade = $localeFacade;
     }
 
-    /**
-     * @param int $idConfigurableBundleTemplate
-     *
-     * @return \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotTransfer
-     */
     public function getData(int $idConfigurableBundleTemplate): ConfigurableBundleTemplateSlotTransfer
     {
         $configurableBundleTemplateSlotTransfer = (new ConfigurableBundleTemplateSlotTransfer())

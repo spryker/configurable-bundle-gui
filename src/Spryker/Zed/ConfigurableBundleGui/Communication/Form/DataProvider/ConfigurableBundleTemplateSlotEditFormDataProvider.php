@@ -46,11 +46,6 @@ class ConfigurableBundleTemplateSlotEditFormDataProvider
         $this->configurableBundleTemplateSlotEditFormDataProviderExpanderPlugins = $configurableBundleTemplateSlotEditFormDataProviderExpanderPlugins;
     }
 
-    /**
-     * @param int $idConfigurableBundleTemplateSlot
-     *
-     * @return \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotEditFormTransfer
-     */
     public function getData(int $idConfigurableBundleTemplateSlot): ConfigurableBundleTemplateSlotEditFormTransfer
     {
         $configurableBundleTemplateSlotEditFormTransfer = new ConfigurableBundleTemplateSlotEditFormTransfer();
@@ -101,11 +96,6 @@ class ConfigurableBundleTemplateSlotEditFormDataProvider
         return $options;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotEditFormTransfer $configurableBundleTemplateSlotEditFormTransfer
-     *
-     * @return \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotEditFormTransfer
-     */
     protected function expandDataWithDataProviderExpanderPlugins(
         ConfigurableBundleTemplateSlotEditFormTransfer $configurableBundleTemplateSlotEditFormTransfer
     ): ConfigurableBundleTemplateSlotEditFormTransfer {

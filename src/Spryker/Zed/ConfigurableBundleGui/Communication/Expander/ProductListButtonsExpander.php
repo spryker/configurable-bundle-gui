@@ -33,11 +33,6 @@ class ProductListButtonsExpander implements ProductListButtonsExpanderInterface
         'iconClass' => 'fa fa-caret-right',
     ];
 
-    /**
-     * @param \Generated\Shared\Transfer\ButtonCollectionTransfer $buttonCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\ButtonCollectionTransfer
-     */
     public function expandButtonCollection(ButtonCollectionTransfer $buttonCollectionTransfer): ButtonCollectionTransfer
     {
         $buttonCollectionTransfer->addButton($this->createTemplateListButtonTransfer());
@@ -45,9 +40,6 @@ class ProductListButtonsExpander implements ProductListButtonsExpanderInterface
         return $buttonCollectionTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ButtonTransfer
-     */
     protected function createTemplateListButtonTransfer(): ButtonTransfer
     {
         return (new ButtonTransfer())

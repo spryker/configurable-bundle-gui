@@ -29,11 +29,6 @@ class ConfigurableBundleTemplateSlotEditTabs extends AbstractConfigurableBundleT
         $this->configurableBundleTemplateSlotEditTabsExpanderPlugins = $configurableBundleTemplateSlotEditTabsExpanderPlugins;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TabsViewTransfer $tabsViewTransfer
-     *
-     * @return \Generated\Shared\Transfer\TabsViewTransfer
-     */
     protected function build(TabsViewTransfer $tabsViewTransfer): TabsViewTransfer
     {
         $tabsViewTransfer = parent::build($tabsViewTransfer);
@@ -41,11 +36,6 @@ class ConfigurableBundleTemplateSlotEditTabs extends AbstractConfigurableBundleT
         return $this->executeExpanderPlugins($tabsViewTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TabsViewTransfer $tabsViewTransfer
-     *
-     * @return \Generated\Shared\Transfer\TabsViewTransfer
-     */
     protected function executeExpanderPlugins(TabsViewTransfer $tabsViewTransfer): TabsViewTransfer
     {
         foreach ($this->configurableBundleTemplateSlotEditTabsExpanderPlugins as $configurableBundleTemplateSlotEditTabsExpanderPlugin) {

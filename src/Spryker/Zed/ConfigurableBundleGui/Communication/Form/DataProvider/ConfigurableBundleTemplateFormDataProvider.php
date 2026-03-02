@@ -26,10 +26,6 @@ class ConfigurableBundleTemplateFormDataProvider
      */
     protected $localeFacade;
 
-    /**
-     * @param \Spryker\Zed\ConfigurableBundleGui\Dependency\Facade\ConfigurableBundleGuiToConfigurableBundleFacadeInterface $configurableBundleFacade
-     * @param \Spryker\Zed\ConfigurableBundleGui\Dependency\Facade\ConfigurableBundleGuiToLocaleFacadeInterface $localeFacade
-     */
     public function __construct(
         ConfigurableBundleGuiToConfigurableBundleFacadeInterface $configurableBundleFacade,
         ConfigurableBundleGuiToLocaleFacadeInterface $localeFacade
@@ -38,11 +34,6 @@ class ConfigurableBundleTemplateFormDataProvider
         $this->localeFacade = $localeFacade;
     }
 
-    /**
-     * @param int|null $idConfigurableBundleTemplate
-     *
-     * @return \Generated\Shared\Transfer\ConfigurableBundleTemplateTransfer
-     */
     public function getData(?int $idConfigurableBundleTemplate = null): ConfigurableBundleTemplateTransfer
     {
         if (!$idConfigurableBundleTemplate) {
@@ -73,9 +64,6 @@ class ConfigurableBundleTemplateFormDataProvider
         ];
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ConfigurableBundleTemplateTransfer
-     */
     protected function createEmptyConfigurableBundleTemplate(): ConfigurableBundleTemplateTransfer
     {
         $configurableBundleTemplateTransfer = new ConfigurableBundleTemplateTransfer();

@@ -102,10 +102,6 @@ class ConfigurableBundleTemplateTable extends AbstractTable
      */
     protected $localeFacade;
 
-    /**
-     * @param \Orm\Zed\ConfigurableBundle\Persistence\SpyConfigurableBundleTemplateQuery $configurableBundleTemplatePropelQuery
-     * @param \Spryker\Zed\ConfigurableBundleGui\Dependency\Facade\ConfigurableBundleGuiToLocaleFacadeInterface $localeFacade
-     */
     public function __construct(
         SpyConfigurableBundleTemplateQuery $configurableBundleTemplatePropelQuery,
         ConfigurableBundleGuiToLocaleFacadeInterface $localeFacade
@@ -114,11 +110,6 @@ class ConfigurableBundleTemplateTable extends AbstractTable
         $this->localeFacade = $localeFacade;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $config->setHeader([
@@ -152,11 +143,6 @@ class ConfigurableBundleTemplateTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return array
-     */
     protected function prepareData(TableConfiguration $config): array
     {
         /** @var \Propel\Runtime\Collection\ObjectCollection<\Orm\Zed\ConfigurableBundle\Persistence\SpyConfigurableBundleTemplate> $configurableBundleTemplateEntityCollection */
@@ -223,11 +209,6 @@ class ConfigurableBundleTemplateTable extends AbstractTable
         return $configurableBundleTemplateRow;
     }
 
-    /**
-     * @param \Orm\Zed\ConfigurableBundle\Persistence\SpyConfigurableBundleTemplate $configurableBundleTemplateEntity
-     *
-     * @return array
-     */
     protected function mapConfigurableBundleTemplate(SpyConfigurableBundleTemplate $configurableBundleTemplateEntity): array
     {
         $configurableBundleTemplateRow = $configurableBundleTemplateEntity->toArray();
@@ -244,11 +225,6 @@ class ConfigurableBundleTemplateTable extends AbstractTable
         return $configurableBundleTemplateRow;
     }
 
-    /**
-     * @param \Orm\Zed\ConfigurableBundle\Persistence\SpyConfigurableBundleTemplate $configurableBundleTemplateEntity
-     *
-     * @return string
-     */
     protected function buildLinks(SpyConfigurableBundleTemplate $configurableBundleTemplateEntity): string
     {
         $buttons = [];
@@ -271,11 +247,6 @@ class ConfigurableBundleTemplateTable extends AbstractTable
         return implode(' ', $buttons);
     }
 
-    /**
-     * @param \Orm\Zed\ConfigurableBundle\Persistence\SpyConfigurableBundleTemplate $configurableBundleTemplateEntity
-     *
-     * @return string
-     */
     protected function generateTemplateStatusChangeButton(SpyConfigurableBundleTemplate $configurableBundleTemplateEntity): string
     {
         if ($configurableBundleTemplateEntity->getIsActive()) {
@@ -300,11 +271,6 @@ class ConfigurableBundleTemplateTable extends AbstractTable
         );
     }
 
-    /**
-     * @param \Orm\Zed\ConfigurableBundle\Persistence\SpyConfigurableBundleTemplate $configurableBundleTemplateEntity
-     *
-     * @return string
-     */
     protected function getStatusLabel(SpyConfigurableBundleTemplate $configurableBundleTemplateEntity): string
     {
         if (!$configurableBundleTemplateEntity->getIsActive()) {

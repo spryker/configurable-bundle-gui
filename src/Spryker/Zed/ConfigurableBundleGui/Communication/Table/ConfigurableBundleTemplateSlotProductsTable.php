@@ -55,13 +55,6 @@ class ConfigurableBundleTemplateSlotProductsTable extends AbstractTable
      */
     protected $productListFacade;
 
-    /**
-     * @param int $idConfigurableBundleTemplateSlot
-     * @param \Orm\Zed\ConfigurableBundle\Persistence\SpyConfigurableBundleTemplateSlotQuery $configurableBundleTemplateSlotPropelQuery
-     * @param \Orm\Zed\Product\Persistence\SpyProductQuery $productPropelQuery
-     * @param \Spryker\Zed\ConfigurableBundleGui\Dependency\Facade\ConfigurableBundleGuiToLocaleFacadeInterface $localeFacade
-     * @param \Spryker\Zed\ConfigurableBundleGui\Dependency\Facade\ConfigurableBundleGuiToProductListFacadeInterface $productListFacade
-     */
     public function __construct(
         int $idConfigurableBundleTemplateSlot,
         SpyConfigurableBundleTemplateSlotQuery $configurableBundleTemplateSlotPropelQuery,
@@ -76,11 +69,6 @@ class ConfigurableBundleTemplateSlotProductsTable extends AbstractTable
         $this->productListFacade = $productListFacade;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $config->setHeader([

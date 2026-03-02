@@ -15,17 +15,11 @@ use Generated\Shared\Transfer\ConfigurableBundleTemplateSlotTranslationTransfer;
  */
 class ConfigurableBundleTemplateSlotTranslationForm extends AbstractConfigurableBundleTranslationForm
 {
-    /**
-     * @return string
-     */
     public function getBlockPrefix(): string
     {
         return 'configurable_bundle_template_slot_translations';
     }
 
-    /**
-     * @return array
-     */
     protected function getDefaultOptions(): array
     {
         return [

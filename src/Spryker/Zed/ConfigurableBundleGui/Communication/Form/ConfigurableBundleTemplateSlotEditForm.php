@@ -24,11 +24,6 @@ class ConfigurableBundleTemplateSlotEditForm extends AbstractConfigurableBundleT
      */
     protected const OPTION_CATEGORY_IDS = ProductListCategoryRelationTransfer::CATEGORY_IDS;
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);
@@ -53,9 +48,6 @@ class ConfigurableBundleTemplateSlotEditForm extends AbstractConfigurableBundleT
         $this->setFieldsPropertyPath($builder);
     }
 
-    /**
-     * @return array
-     */
     protected function getDefaultOptions(): array
     {
         return [
@@ -63,11 +55,6 @@ class ConfigurableBundleTemplateSlotEditForm extends AbstractConfigurableBundleT
         ];
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     *
-     * @return void
-     */
     protected function setFieldsPropertyPath(FormBuilderInterface $builder): void
     {
         $builder->get(static::FIELD_NAME)->setPropertyPath(
@@ -120,12 +107,6 @@ class ConfigurableBundleTemplateSlotEditForm extends AbstractConfigurableBundleT
         );
     }
 
-    /**
-     * @param string $parent
-     * @param string $field
-     *
-     * @return string
-     */
     protected function getFieldPropertyPath(string $parent, string $field): string
     {
         return $parent . '.' . $field;

@@ -12,12 +12,6 @@ use Generated\Shared\Transfer\ProductListUsedByTableRowTransfer;
 
 interface ProductListUsedByTableMapperInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ConfigurableBundleTemplateSlotTransfer $configurableBundleTemplateSlotTransfer
-     * @param \Generated\Shared\Transfer\ProductListUsedByTableRowTransfer $productListUsedByTableRowTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductListUsedByTableRowTransfer
-     */
     public function mapConfigurableBundleTemplateSlotTransferToProductListUsedByTableRowTransfer(
         ConfigurableBundleTemplateSlotTransfer $configurableBundleTemplateSlotTransfer,
         ProductListUsedByTableRowTransfer $productListUsedByTableRowTransfer

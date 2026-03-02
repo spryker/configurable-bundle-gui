@@ -17,11 +17,6 @@ class ConfigurableBundleTemplateEditTabs extends AbstractConfigurableBundleTabs
      */
     protected const SLOTS_TAB_NAME = 'Slots';
 
-    /**
-     * @param \Generated\Shared\Transfer\TabsViewTransfer $tabsViewTransfer
-     *
-     * @return \Generated\Shared\Transfer\TabsViewTransfer
-     */
     protected function build(TabsViewTransfer $tabsViewTransfer): TabsViewTransfer
     {
         $tabsViewTransfer = parent::build($tabsViewTransfer);
