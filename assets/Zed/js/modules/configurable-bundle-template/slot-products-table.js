@@ -18,13 +18,15 @@ var isInitialDraw = true,
     $slotProductsTableWrapper = $('#slot-products-table-wrapper'),
     $slotProductsTableName = $('#slot-products-table-name');
 
+const tableBodySelector = $slotTableWrapper.find('.dt-container') ? '.dt-container' : '.dataTables_scrollBody';
+
 function init() {
     addSlotTableRowClickHandler();
     addSlotTableDrawHandler();
 }
 
 function addSlotTableRowClickHandler() {
-    var $slotTable = $slotTableWrapper.find('.dataTables_scrollBody table').first().DataTable();
+    var $slotTable = $slotTableWrapper.find(`${tableBodySelector} table`).first().DataTable();
 
     $slotTable.on('click', 'tbody > tr', function () {
         updateSlotProductsTable(this, $slotTable);
@@ -32,7 +34,7 @@ function addSlotTableRowClickHandler() {
 }
 
 function addSlotTableDrawHandler() {
-    var $slotTable = $slotTableWrapper.find('.dataTables_scrollBody table').first().DataTable();
+    var $slotTable = $slotTableWrapper.find(`${tableBodySelector} table`).first().DataTable();
 
     $slotTable.on('draw', function () {
         var $rows = $(this).find('tbody > tr');
@@ -55,7 +57,7 @@ function addSlotTableDrawHandler() {
 }
 
 function loadSlotProductsTable() {
-    var $slotProductsTable = $slotProductsTableWrapper.find('.dataTables_scrollBody table').first(),
+    var $slotProductsTable = $slotProductsTableWrapper.find(`${tableBodySelector} table`).first(),
         slotProductsTableLoadUrl =
             '/configurable-bundle-gui/template/slot-products-table?id-configurable-bundle-template-slot=';
 
