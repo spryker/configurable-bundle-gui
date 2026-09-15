@@ -5,6 +5,8 @@
 
 'use strict';
 
+var tableAccess = require('ZedGuiModules/libs/table/table-access');
+
 var config = {
     slotTableColumnsMapping: {
         idSlot: 0,
@@ -12,59 +14,134 @@ var config = {
     },
 };
 
-var isInitialDraw = true,
-    selectedIdSlot = 0,
-    $slotTableWrapper = $('#slot-table-wrapper'),
-    $slotProductsTableWrapper = $('#slot-products-table-wrapper'),
-    $slotProductsTableName = $('#slot-products-table-name');
+var slotProductsTableLoadUrl =
+    '/configurable-bundle-gui/template/slot-products-table?id-configurable-bundle-template-slot=';
 
-const tableBodySelector = $slotTableWrapper.find('.dt-container') ? '.dt-container' : '.dataTables_scrollBody';
+var isInitialSelectionDone = false,
+    selectedIdSlot = 0,
+    slotHandle = null,
+    slotProductsHandle = null,
+    slotProductsUrl = null,
+    $slotProductsTableWrapper = null,
+    $slotProductsTableName = null;
+
+/**
+ * The server sends the slot ID column locale formatted, so a four digit ID arrives grouped - "1,234".
+ * It is compared against the selected ID and sent to the server, so it is read back as a number rather
+ * than used as the string the table shows.
+ *
+ * @param {string|number} value - Cell holding the slot ID.
+ *
+ * @returns {number} Slot ID the cell holds.
+ */
+function toIdSlot(value) {
+    return parseInt(String(value).replace(/\D/g, ''), 10) || 0;
+}
 
 function init() {
-    addSlotTableRowClickHandler();
-    addSlotTableDrawHandler();
-}
+    var slotTable = document.querySelector('#slot-table-wrapper table[id]');
+    var slotProductsTable = document.querySelector('#slot-products-table-wrapper table[id]');
 
-function addSlotTableRowClickHandler() {
-    var $slotTable = $slotTableWrapper.find(`${tableBodySelector} table`).first().DataTable();
+    $slotProductsTableWrapper = $('#slot-products-table-wrapper');
+    $slotProductsTableName = $('#slot-products-table-name');
 
-    $slotTable.on('click', 'tbody > tr', function () {
-        updateSlotProductsTable(this, $slotTable);
+    if (!slotTable || !slotProductsTable) {
+        return;
+    }
+
+    $(slotTable).on('click', 'tbody > tr:not(.child)', function () {
+        selectSlot(slotHandle.raw().row(this));
     });
-}
 
-function addSlotTableDrawHandler() {
-    var $slotTable = $slotTableWrapper.find(`${tableBodySelector} table`).first().DataTable();
+    tableAccess.requestTable(slotTable, function (handle) {
+        slotHandle = handle;
 
-    $slotTable.on('draw', function () {
-        var $rows = $(this).find('tbody > tr');
-
-        if (isInitialDraw) {
-            performInitialDraw($slotTable, $rows);
-        }
-
-        $.each($rows, function (index, row) {
-            const rowData = $slotTable.row(row).data();
-            if (!rowData) {
-                return;
-            }
-
-            if (rowData[config.slotTableColumnsMapping.idSlot] === selectedIdSlot) {
-                markSelectedRow($(row));
-            }
+        handle.on('draw', function () {
+            slotTableDrawAction(handle.raw());
         });
     });
+
+    tableAccess.requestTable(slotProductsTable, function (handle) {
+        slotProductsHandle = handle;
+
+        if (slotProductsUrl) {
+            handle.reload(slotProductsUrl);
+        }
+    });
+}
+
+/**
+ * @param {Object} api - Slot table API instance.
+ */
+function slotTableDrawAction(api) {
+    $slotProductsTableWrapper.removeClass('hidden');
+
+    if (!isInitialSelectionDone && api.rows().count() !== 0) {
+        isInitialSelectionDone = true;
+        selectInitialSlot(api);
+    }
+
+    markSelectedRows(api);
+}
+
+/**
+ * @param {Object} api - Slot table API instance.
+ */
+function selectInitialSlot(api) {
+    var initialSelectedIdSlot = getInitialSelectedIdSlot();
+
+    if (!initialSelectedIdSlot) {
+        selectSlot(api.row(0));
+
+        return;
+    }
+
+    api.rows().every(function () {
+        if (toIdSlot(this.data()[config.slotTableColumnsMapping.idSlot]) === initialSelectedIdSlot) {
+            selectSlot(this);
+        }
+    });
+}
+
+/**
+ * @param {Object} row - Row of the slot table the products are shown for.
+ */
+function selectSlot(row) {
+    var rowData = row.data();
+
+    if (!rowData) {
+        return;
+    }
+
+    var idSlot = toIdSlot(rowData[config.slotTableColumnsMapping.idSlot]);
+
+    if (idSlot === selectedIdSlot) {
+        return;
+    }
+
+    selectedIdSlot = idSlot;
+    loadSlotProductsTable();
+    markSelectedRow($(row.node()));
+    $slotProductsTableName.text(rowData[config.slotTableColumnsMapping.slotName]);
 }
 
 function loadSlotProductsTable() {
-    var $slotProductsTable = $slotProductsTableWrapper.find(`${tableBodySelector} table`).first(),
-        slotProductsTableLoadUrl =
-            '/configurable-bundle-gui/template/slot-products-table?id-configurable-bundle-template-slot=';
+    slotProductsUrl = slotProductsTableLoadUrl + selectedIdSlot;
 
-    $slotProductsTable
-        .DataTable()
-        .ajax.url(slotProductsTableLoadUrl + selectedIdSlot)
-        .load();
+    if (slotProductsHandle) {
+        slotProductsHandle.reload(slotProductsUrl);
+    }
+}
+
+/**
+ * @param {Object} api - Slot table API instance.
+ */
+function markSelectedRows(api) {
+    api.rows().every(function () {
+        if (toIdSlot(this.data()[config.slotTableColumnsMapping.idSlot]) === selectedIdSlot) {
+            markSelectedRow($(this.node()));
+        }
+    });
 }
 
 function markSelectedRow($row) {
@@ -73,50 +150,7 @@ function markSelectedRow($row) {
 }
 
 function getInitialSelectedIdSlot() {
-    var selectedIdSlot = $('#selected-id-configurable-bundle-template-slot').val();
-
-    return selectedIdSlot.length ? parseInt(selectedIdSlot) : 0;
-}
-
-function performInitialDraw($slotTable, $rows) {
-    isInitialDraw = false;
-    $slotProductsTableWrapper.removeClass('hidden');
-
-    if (!$rows.length) {
-        return;
-    }
-
-    var initialSelectedIdSlot = getInitialSelectedIdSlot();
-
-    if (!initialSelectedIdSlot) {
-        updateSlotProductsTable($rows.first(), $slotTable);
-
-        return;
-    }
-
-    $.each($rows, function (index, row) {
-        if ($slotTable.row(row).data()[config.slotTableColumnsMapping.idSlot] === initialSelectedIdSlot) {
-            updateSlotProductsTable(row, $slotTable);
-        }
-    });
-}
-
-function updateSlotProductsTable(row, $slotTable) {
-    var rowData = $slotTable.row(row).data();
-    if (!rowData) {
-        return;
-    }
-
-    var idSlot = rowData[config.slotTableColumnsMapping.idSlot];
-
-    if (idSlot === selectedIdSlot) {
-        return;
-    }
-
-    selectedIdSlot = idSlot;
-    loadSlotProductsTable();
-    markSelectedRow($(row));
-    $slotProductsTableName.text(rowData[config.slotTableColumnsMapping.slotName]);
+    return toIdSlot($('#selected-id-configurable-bundle-template-slot').val());
 }
 
 module.exports = {
