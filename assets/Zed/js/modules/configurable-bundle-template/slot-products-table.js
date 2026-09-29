@@ -17,13 +17,13 @@ var config = {
 var slotProductsTableLoadUrl =
     '/configurable-bundle-gui/template/slot-products-table?id-configurable-bundle-template-slot=';
 
-var isInitialSelectionDone = false,
-    selectedIdSlot = 0,
-    slotHandle = null,
-    slotProductsHandle = null,
-    slotProductsUrl = null,
-    $slotProductsTableWrapper = null,
-    $slotProductsTableName = null;
+var isInitialSelectionDone = false;
+var selectedIdSlot = 0;
+var slotHandle = null;
+var slotProductsHandle = null;
+var slotProductsUrl = null;
+var $slotProductsTableWrapper = null;
+var $slotProductsTableName = null;
 
 /**
  * The server sends the slot ID column locale formatted, so a four digit ID arrives grouped - "1,234".
