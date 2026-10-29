@@ -274,7 +274,7 @@ class ConfigurableBundleTemplateTable extends AbstractTable
     protected function getStatusLabel(SpyConfigurableBundleTemplate $configurableBundleTemplateEntity): string
     {
         if (!$configurableBundleTemplateEntity->getIsActive()) {
-            return $this->generateLabel(static::STATUS_INACTIVE, 'label-danger');
+            return $this->generateLabel(static::STATUS_INACTIVE, 'badge-outline-dark');
         }
 
         return $this->generateLabel(static::STATUS_ACTIVE, 'label-success');
