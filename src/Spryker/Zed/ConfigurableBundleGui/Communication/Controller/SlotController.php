@@ -176,7 +176,7 @@ class SlotController extends AbstractController
 
     public function availableProductConcreteTableAction(): JsonResponse
     {
-        $availableProductConcreteTable = $productConcreteRelationTables = $this->getFactory()
+        $availableProductConcreteTable = $this->getFactory()
             ->createProductConcreteRelationTablesProvider()
             ->getTables()['availableProductConcreteTable'];
 
@@ -187,7 +187,7 @@ class SlotController extends AbstractController
 
     public function assignedProductConcreteTableAction(): JsonResponse
     {
-        $assignedProductConcreteTable = $productConcreteRelationTables = $this->getFactory()
+        $assignedProductConcreteTable = $this->getFactory()
             ->createProductConcreteRelationTablesProvider()
             ->getTables()['assignedProductConcreteTable'];
 
